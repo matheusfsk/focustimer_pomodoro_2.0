@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #fff;
+
+  --base-color: 130;
+  --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
+  --primary-color: hsl(var(--bsae-color), 100%, 63%);
+
+  --text-color: #323238;
+
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+
+  color: var(--text-color);
+
+  font-weight: 500;
+  font-size: 12.6rem;
+
+  display: grid;
+  min-height: 100vh;
+}
+
+main {
+  background-color: var(--bg-color);
+  align-self: end;
+  justify-self: center;
+  display: flex;
+  padding: 19.6rem 22.6rem 18.8rem 23.3rem;
+
+  border-radius: 3rem;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#clock {
+  margin: auto;
+  margin-right: 19.2rem;
+}
+
+#timer {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  padding-bottom: 4.8rem;
+}
+
+.hide {
+  display: none;
+}
+
+.pause svg path {
+  fill: #323238;
+}
+
+.card {
+  background-color: #cbcbd2;
+  border-radius: 2.4rem;
+  width: 13.8rem;
+  height: 15.2rem;
+  gap: 3.2rem;
+}
+
+.controls {
+  display: flex;
+}
+
+.selected,
+.selected svg path {
+  background-color: #02799d;
+  fill: white;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.rightPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
