@@ -5,6 +5,9 @@ const buttonMore = document.querySelector(".more");
 const buttonLess = document.querySelector(".less");
 const minutesDisplay = document.querySelector(".minutes");
 const secondsDisplay = document.querySelector(".seconds");
+const buttonSun = document.querySelector("#sun");
+const buttonMoon = document.querySelector("#moon");
+const buttonLight = document.querySelector(".light");
 
 let minutes = Number(minutesDisplay.textContent);
 let timerTimeOut;
@@ -15,6 +18,12 @@ const buttonMarket = document.querySelector("#market");
 const buttonFire = document.querySelector("#fire");
 
 ///// -----------------SOUNDSSSSSSSS -----------//////////////
+const slider = document.querySelector(".slider");
+let volume1;
+
+function setVolume() {
+  nowPlaying.volume;
+}
 
 const audioButtonPress = document.querySelector("#audioButtonPress");
 const audioForest = document.querySelector("#audioForest");
@@ -128,41 +137,76 @@ buttonLess.addEventListener("click", function () {
 
 /////////////////* -- TABELA LATERAL  -- *////////////////
 
-buttonForest.addEventListener("click", function () {
-  audioButton();
-  playAudio(audioForest);
-  buttonForest.classList.add("selected");
+function toggleAudio(button) {
+  buttonForest.classList.remove("selected");
   buttonRain.classList.remove("selected");
   buttonMarket.classList.remove("selected");
   buttonFire.classList.remove("selected");
+  button.classList.add("selected");
+}
+
+buttonForest.addEventListener("click", function () {
+  audioButton();
+  playAudio(audioForest);
+  toggleAudio(buttonForest);
 });
 
 buttonRain.addEventListener("click", function () {
   audioButton();
   playAudio(audioRain);
-
-  buttonForest.classList.remove("selected");
-  buttonRain.classList.add("selected");
-  buttonMarket.classList.remove("selected");
-  buttonFire.classList.remove("selected");
+  toggleAudio(buttonRain);
 });
 
 buttonMarket.addEventListener("click", function () {
   audioButton();
   playAudio(audioMarket);
-
-  buttonForest.classList.remove("selected");
-  buttonRain.classList.remove("selected");
-  buttonMarket.classList.add("selected");
-  buttonFire.classList.remove("selected");
+  toggleAudio(buttonMarket);
 });
 
 buttonFire.addEventListener("click", function () {
   audioButton();
   playAudio(audioFire);
+  toggleAudio(buttonFire);
+});
 
-  buttonForest.classList.remove("selected");
-  buttonRain.classList.remove("selected");
-  buttonMarket.classList.remove("selected");
-  buttonFire.classList.add("selected");
+//////////////////////// NIGHT //////////////////////////
+
+function toggleMode() {
+  buttonSun.classList.toggle("hide");
+  buttonMoon.classList.toggle("hide");
+  buttonLight.classList.toggle("light");
+  buttonLight.classList.toggle("dark");
+}
+
+buttonSun.addEventListener("click", function () {
+  audioButton();
+  toggleMode();
+});
+
+buttonMoon.addEventListener("click", function () {
+  audioButton();
+  toggleMode();
+});
+
+/////////////// SLIDER VOLUME ////////////////
+
+const sliderForest = document.querySelector("#sliderForest");
+const sliderRain = document.querySelector("#sliderRain");
+const sliderMarket = document.querySelector("#sliderMarket");
+const sliderFire = document.querySelector("#sliderFire");
+
+sliderForest.addEventListener("input", () => {
+  audioForest.volume = sliderForest.value / 100;
+});
+
+sliderRain.addEventListener("input", () => {
+  audioRain.volume = sliderRain.value / 100;
+});
+
+sliderMarket.addEventListener("input", () => {
+  audioMarket.volume = sliderMarket.value / 100;
+});
+
+sliderFire.addEventListener("input", () => {
+  audioFire.volume = sliderFire.value / 100;
 });
